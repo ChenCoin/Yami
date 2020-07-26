@@ -24,8 +24,9 @@ dependencies {
     compile group: 'org.eclipse.jetty', name: 'jetty-server', version: '9.4.30.v20200611'
     // https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-servlet
     compile group: 'org.eclipse.jetty', name: 'jetty-servlet', version: '9.4.30.v20200611'
+
     // https://mvnrepository.com/artifact/org.apache.derby/derby
-    compile group: 'org.apache.derby', name: 'derby', version: '10.15.2.0'
+    compile group: 'org.apache.derby', name: 'derby', version: '10.11.1.1'
 }
 
 compileKotlin {

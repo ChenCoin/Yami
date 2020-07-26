@@ -3,36 +3,29 @@ package xyz.cyan.db;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
-public class DBcase {
+public class DbHelper {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public void run() {
+
         try {
-            // load the driver
-            Class.forName("org.apache.derby.jdbc.EmbeddedDriver").newInstance();
             System.out.println("Load the embedded driver");
 
             Properties props = new Properties();
             props.put("user", "root");
-            props.put("password", "123");
-            //create and connect the database named helloDB
-            Connection conn = DriverManager.getConnection("jdbc:derby:helloDB;create=true", props);
+            props.put("password", "123456");
+            //new EmbeddedDriver();
+            Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
+
+            Connection conn = DriverManager.getConnection("jdbc:derby:yamiDB;create=true", props);
             System.out.println("create and connect to helloDB");
             conn.setAutoCommit(false);
 
-            // create a table and insert two records
             Statement s = conn.createStatement();
             s.execute("create table hellotable(name varchar(40), score int)");
-	    /*
-		//s.execute("create table hellotable(name varchar(40), score int)");
-	     */
+
             System.out.println("Created table hellotable");
             s.execute("insert into hellotable values('Ruth Cao', 86)");
             s.execute("insert into hellotable values ('Flora Shi', 92)");
@@ -57,18 +50,9 @@ public class DBcase {
             conn.commit();
             conn.close();
             System.out.println("Committed transaction and closed connection");
-
-            try { // perform a clean shutdown
-                DriverManager.getConnection("jdbc:derby:;shutdown=true");
-            } catch (SQLException se) {
-                System.out.println("Database shut down normally");
-            }
-        } catch (SQLException se) {
-            // handle the exception
-            System.out.println(se.getErrorCode() + "||" + se.getMessage() + "||" + se.getSQLState());
-        } catch (ClassNotFoundException | IllegalAccessException | InstantiationException e) {
+        } catch (Exception se) {
+            se.printStackTrace();
         }
-        System.out.println("SimpleApp finished");
     }
 
 }

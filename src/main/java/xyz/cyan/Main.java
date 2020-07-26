@@ -3,6 +3,7 @@ package xyz.cyan;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
+import xyz.cyan.db.Database;
 import xyz.cyan.server.NoteList;
 
 import javax.servlet.http.HttpServlet;
@@ -23,6 +24,9 @@ public class Main extends HttpServlet {
     }
 
     public static void main(String[] args) throws Exception {
+        new Database().init();
+        if (true) return;
+
         int port = 8080;
         try {
             port = Integer.parseInt(args[0]);
