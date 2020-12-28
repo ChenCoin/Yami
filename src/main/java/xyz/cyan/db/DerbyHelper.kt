@@ -14,7 +14,7 @@ abstract class DerbyHelper {
     private var initial = false
 
     fun init() {
-        Thread {
+        try {
             post {
                 try {
                     onCreate(it)
@@ -24,8 +24,10 @@ abstract class DerbyHelper {
                     else e.printStackTrace()
                 }
             }
-            initial = true
-        }.start()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        initial = true
     }
 
     fun getWritableDatabase() {

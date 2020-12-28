@@ -24,7 +24,11 @@ public class Main extends HttpServlet {
     }
 
     public static void main(String[] args) throws Exception {
-        new Database().init();
+        Database db = new Database();
+        db.init();
+        db.add();
+        db.query();
+
         if (true) return;
 
         int port = 8080;

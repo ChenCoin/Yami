@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #FFFFFF;" stylesheets="@skin.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="yami.ui.Controller">
+    <children>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="73.0">
+            <children>
+                <VBox alignment="TOP_CENTER" prefWidth="150.0" style="-fx-background-color: #35475f;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="150.0" onMouseClicked="#showBox1" prefHeight="54.0" styleClass="text" text="录入数据" textFill="WHITE">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Label>
+                        <Label alignment="CENTER" onMouseClicked="#showBox2" prefHeight="54.0" prefWidth="150.0" styleClass="text" text="数据库" textFill="WHITE">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Label>
+                        <Label alignment="CENTER" onMouseClicked="#showBox3" prefHeight="54.0" prefWidth="150.0" styleClass="text" text="设置" textFill="WHITE">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </VBox>
+                <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #f8f8fa;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <children>
+                        <VBox fx:id="box1" alignment="TOP_CENTER">
+                            <children>
+                                <Button mnemonicParsing="false" onAction="#next" prefHeight="32.0" prefWidth="200.0" text="录入数据">
+                                    <VBox.margin>
+                                        <Insets bottom="32.0" top="32.0" />
+                                    </VBox.margin>
+                                </Button>
+                            </children>
+                        </VBox>
+                  <StackPane fx:id="box2" alignment="TOP_CENTER" prefHeight="150.0" prefWidth="200.0" visible="false">
+                     <children>
+                        <Label text="数据库正在加紧修建">
+                           <StackPane.margin>
+                              <Insets top="64.0" />
+                           </StackPane.margin></Label>
+                     </children>
+                  </StackPane>
+                  <VBox fx:id="box3" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" visible="false">
+                     <children>
+                        <Label text="未完待续">
+                           <VBox.margin>
+                              <Insets top="64.0" />
+                           </VBox.margin></Label>
+                     </children>
+                  </VBox>
+                    </children>
+                </StackPane>
+            </children>
+        </AnchorPane>
+        <AnchorPane styleClass="title" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <children>
+                <Label text="慧博考勤管理系统" textFill="#35475f" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="20.0">
+                    <font>
+                        <Font size="25.0" />
+                    </font>
+                </Label>
+                <VBox alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <children>
+                        <ImageView fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@logo.png" />
+                            </image>
+                            <VBox.margin>
+                                <Insets left="24.0" right="24.0" />
+                            </VBox.margin>
+                        </ImageView>
+                    </children>
+                </VBox>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

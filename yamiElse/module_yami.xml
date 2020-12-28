@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_yami" default="compile.module.yami">
+  <dirname property="module.yami.basedir" file="${ant.file.module_yami}"/>
+  
+  <property name="module.jdk.home.yami" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.yami" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.yami" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.yami" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="yami.output.dir" value="${module.yami.basedir}/out/production/yami"/>
+  <property name="yami.testoutput.dir" value="${module.yami.basedir}/out/test/yami"/>
+  
+  <path id="yami.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="yami.module.production.classpath">
+    <path refid="${module.jdk.classpath.yami}"/>
+    <path refid="library.kotlinjavaruntime.classpath"/>
+  </path>
+  
+  <path id="yami.runtime.production.module.classpath">
+    <pathelement location="${yami.output.dir}"/>
+    <path refid="library.kotlinjavaruntime.classpath"/>
+  </path>
+  
+  <path id="yami.module.classpath">
+    <path refid="${module.jdk.classpath.yami}"/>
+    <pathelement location="${yami.output.dir}"/>
+    <path refid="library.kotlinjavaruntime.classpath"/>
+  </path>
+  
+  <path id="yami.runtime.module.classpath">
+    <pathelement location="${yami.testoutput.dir}"/>
+    <pathelement location="${yami.output.dir}"/>
+    <path refid="library.kotlinjavaruntime.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.yami">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.yami">
+    <patternset refid="excluded.from.module.yami"/>
+  </patternset>
+  
+  <path id="yami.module.sourcepath">
+    <dirset dir="${module.yami.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.yami" depends="compile.module.yami.production,compile.module.yami.tests" description="Compile module yami"/>
+  
+  <target name="compile.module.yami.production" depends="register.custom.compilers" description="Compile module yami; production classes">
+    <mkdir dir="${yami.output.dir}"/>
+    <javac2 destdir="${yami.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.yami}/javac">
+      <compilerarg line="${compiler.args.yami}"/>
+      <bootclasspath refid="yami.module.bootclasspath"/>
+      <classpath refid="yami.module.production.classpath"/>
+      <src refid="yami.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.yami"/>
+    </javac2>
+    
+    <copy todir="${yami.output.dir}">
+      <fileset dir="${module.yami.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.yami.tests" depends="register.custom.compilers,compile.module.yami.production" description="compile module yami; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.yami" description="cleanup module">
+    <delete dir="${yami.output.dir}"/>
+    <delete dir="${yami.testoutput.dir}"/>
+  </target>
+</project>

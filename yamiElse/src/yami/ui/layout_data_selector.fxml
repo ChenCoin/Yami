@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #FFFFFF;" stylesheets="@skin.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="yami.ui.SelectorOfData">
+    <children>
+        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="73.0">
+            <children>
+                <Label text="选择数据文件">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets bottom="32.0" top="32.0" />
+                    </VBox.margin>
+                </Label>
+                <HBox alignment="CENTER">
+                    <children>
+                        <Button fx:id="selectBtn" mnemonicParsing="false" onAction="#select" text="选择文件">
+                            <HBox.margin>
+                                <Insets bottom="16.0" right="16.0" top="16.0" />
+                            </HBox.margin>
+                        </Button>
+                        <Label fx:id="tipLabel" maxWidth="240.0" text="未选择文件" textOverrun="CENTER_ELLIPSIS" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+        <StackPane alignment="CENTER_LEFT" prefHeight="73.0" styleClass="title" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <children>
+                <Label contentDisplay="CENTER" prefHeight="73.0" text="录入数据" textFill="#35475f">
+                    <font>
+                        <Font size="25.0" />
+                    </font>
+                    <padding>
+                        <Insets left="24.0" right="24.0" />
+                    </padding>
+                </Label>
+            </children>
+        </StackPane>
+        <HBox alignment="CENTER_RIGHT" prefHeight="72.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <children>
+                <Label onMouseClicked="#cancel" styleClass="text" text="取消" />
+                <Button fx:id="nextBtn" disable="true" mnemonicParsing="false" onAction="#next" text="下一步">
+                    <HBox.margin>
+                        <Insets left="32.0" right="64.0" />
+                    </HBox.margin>
+                </Button>
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>
